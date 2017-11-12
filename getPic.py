@@ -9,7 +9,7 @@ def get_html(url):
         head={'user-agent':'Mozilla/5.0'}
         r=requests.get(url,timeout=30,headers=head)
         r.raise_for_status()
-        os.getcwd()
+        print(os.getcwd())
         os.chdir(path)
         with open('catfd.jpg','wb') as f:
             f.write(r.content)
