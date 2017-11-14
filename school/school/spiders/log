@@ -1,0 +1,4 @@
+2017-11-13 19:40:58 [scrapy.utils.log] INFO: Scrapy 1.4.0 started (bot: school)
+2017-11-13 19:40:58 [scrapy.utils.log] INFO: Overridden settings: {'NEWSPIDER_MODULE': 'school.spiders', 'ROBOTSTXT_OBEY': True, 'SPIDER_MODULES': ['school.spiders'], 'LOG_FILE': 'log', 'BOT_NAME': 'school'}
+2017-11-13 19:43:26 [scrapy.utils.log] INFO: Scrapy 1.4.0 started (bot: school)
+2017-11-13 19:43:26 [scrapy.utils.log] INFO: Overridden settings: {'NEWSPIDER_MODULE': 'school.spiders', 'ROBOTSTXT_OBEY': True, 'SPIDER_MODULES': ['school.spiders'], 'LOG_FILE': 'log', 'BOT_NAME': 'school'}
