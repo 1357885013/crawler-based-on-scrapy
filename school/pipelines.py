@@ -15,6 +15,6 @@ class SchoolPipeline(object):
         if item['name'] in self.ids_seen:
             raise DropItem("Duplicate item found: %s" % item)
         else:
-            self.file.write("<{name:^20}>\t<{belong:^16}>\t<{address:^16}>\t<{is985:^3}>\t<{is211:^3}>\t<{isGraduate:^8}>\t<{isSelfCrossed:^11}>\n".format(**item))
+            self.file.write("{name},{belong},{address},{is985},{is211},{isGraduate},{isSelfCrossed}\n".format(**item))
             self.ids_seen.add(item['name'])
             return item
