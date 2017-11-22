@@ -8,14 +8,13 @@ from scrapy.exceptions import DropItem
 
 class SchoolPipeline(object):
     def __init__(self):
-        self.file=open('school.txt','ab')
+        self.file=open('school.txt','wb')
+        self.ids_seen=set()
 
     def process_item(self, item, spider):
         if item['name'] in self.ids_seen:
             raise DropItem("Duplicate item found: %s" % item)
+        else:
+            self.file.write("{name},{belong},{address},{is985},{is211},{isGraduate},{isSelfCrossed}\n".format(**item))
+            self.ids_seen.add(item['name'])
             return item
-#self.file.write("{:^20}\t{:^16}\t{:^16}\t{:^3}\t{:^3}\t{:^4}\t{:^3}\t".format(item))
-        self.file.write("hello world!")
-        
-        self.ids_seen.add(item['name'])
-        return item
