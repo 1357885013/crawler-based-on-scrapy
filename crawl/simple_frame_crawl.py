@@ -5,7 +5,7 @@ import requests
 def get_html(url):
     try:
         head={'user-agent':'Mozilla/5.0'}
-	params={'wd':'hello'}
+        params={'wd':'hello'}
         r=requests.get(url,params=params ,timeout=30,headers=head)
         r.raise_for_status()
         r.encoding=r.apparent_encoding

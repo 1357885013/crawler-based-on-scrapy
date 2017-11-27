@@ -5,8 +5,8 @@ from school.items import SchoolItem
 import bs4
 import sys
 import re
-reload(sys)
-sys.setdefaultencoding('utf-8')
+#reload(sys)
+#sys.setdefaultencoding('utf-8')
 
 
 
