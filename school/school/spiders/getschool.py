@@ -47,22 +47,22 @@ def get_td(html, end):
 
 
 def get_str_2(t_oo):
-        "得到下面表格里的元素里的文字"
-        string = etree.tostring(t_oo)
-        string = string.decode('UTF-8', 'strict')
-        # print("原文:\n" + string)
-        string = re.sub(r"<.*?>", "", string)
-        string = re.sub(r"\[\d*\]", "", string)
-        string = re.sub(r"\n", "", string)
-        re_a = re.findall(r"&#.*?;", string)
-        for i in re_a:
-            o = x_to_h(int(i[2:-1]))
-            if len(o) < 4:
-                o = '0' * (4 - len(o)) + o
-            string = string.replace(i, "\\u" + o)
-        string = string.encode()
-        string = string.decode('unicode-escape')
-        return string
+    "得到下面表格里的元素里的文字"
+    string = etree.tostring(t_oo)
+    string = string.decode('UTF-8', 'strict')
+    # print("原文:\n" + string)
+    string = re.sub(r"<.*?>", "", string)
+    string = re.sub(r"\[\d*\]", "", string)
+    string = re.sub(r"\n", "", string)
+    re_a = re.findall(r"&#.*?;", string)
+    for i in re_a:
+        o = x_to_h(int(i[2:-1]))
+        if len(o) < 4:
+            o = '0' * (4 - len(o)) + o
+        string = string.replace(i, "\\u" + o)
+    string = string.encode()
+    string = string.decode('unicode-escape')
+    return string
 
 
 def get_str(t_o):
@@ -93,14 +93,6 @@ def parse_all(html):
     get_td(html, end)
     return end
 
-
-f = codecs.open('baike.html', 'r', 'UTF-8')
-html = f.read()
-end = parse_all(html)
-string = json.dumps(end, indent=4, separators=(',', ': '))
-string = string.encode()
-string = string.decode('unicode-escape')
-print(string)
 
 def get_str_fail(t_o):
     "遍历所有标签和文字 得到所有文字"

@@ -2,6 +2,5 @@
 
 import Image
 
-im=Image.open('tank.jpg');
-
-im.show();
+im = Image.open('tank.jpg')
+im.show()

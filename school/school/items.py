@@ -11,10 +11,5 @@ import scrapy
 class SchoolItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    name=scrapy.Field()
-    address=scrapy.Field()
-    belong=scrapy.Field()
-    is985=scrapy.Field()
-    is211=scrapy.Field()
-    isGraduate=scrapy.Field()
-    isSelfCrossed=scrapy.Field()
+    name = scrapy.Field()
+    other = scrapy.Field()

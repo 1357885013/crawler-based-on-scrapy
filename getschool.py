@@ -94,14 +94,6 @@ def parse_all(html):
     return end
 
 
-f = codecs.open('baike.html', 'r', 'UTF-8')
-html = f.read()
-end = parse_all(html)
-string = json.dumps(end, indent=4, separators=(',', ': '))
-string = string.encode()
-string = string.decode('unicode-escape')
-print(string)
-
 def get_str_fail(t_o):
     "遍历所有标签和文字 得到所有文字"
     text = ""  # 但是所有标签外文字会在左边，标签内会在右边，字的顺序会乱

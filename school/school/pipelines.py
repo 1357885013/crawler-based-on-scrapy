@@ -5,16 +5,29 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 from scrapy.exceptions import DropItem
+import codecs
+import json
+
 
 class SchoolPipeline(object):
+    data = {}
+
     def __init__(self):
-        self.file=open('school.txt','w+')
-        self.ids_seen=set()
+        pass
 
     def process_item(self, item, spider):
-        if item['name'] in self.ids_seen:
-            raise DropItem("Duplicate item found: %s" % item)
-        else:
-            self.file.write(("{name},{belong},{address},{is985},{is211},{isGraduate},{isSelfCrossed}\n".format(**item)))
-            self.ids_seen.add(item['name'])
+        try:
+            SchoolPipeline.data[item['name']]
+        except KeyError:
+            SchoolPipeline.data[item['name']] = item['other']
             return item
+        SchoolPipeline.data[item['name']].update(item['other'])
+        return item
+
+    def __del__(self):
+        string = json.dumps(SchoolPipeline.data, indent=4, separators=(',', ': '))
+        string = string.encode()
+        string = string.decode("unicode-escape")
+        f = codecs.open('allSchool.txt', 'w', 'utf-8')
+        f.write(string)
+        f.close()
